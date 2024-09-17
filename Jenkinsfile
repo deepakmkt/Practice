@@ -11,7 +11,7 @@ pipeline{
         stage('Build-Memory-details'){
             steps{
                 sh '''
-                echo "Memory details: " free -m
+                echo "The Memory details: " free -m
                 '''
             }
         }
