@@ -1,13 +1,12 @@
-pipeline {
-    agent any
-    tools {
-        git 'Default' // Use the default Git installation
+stages {
+    stage('Build') {
+        steps {
+            echo 'Building...'
+        }
     }
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
+    stage('Test') {
+        steps {
+            echo 'Testing...'
         }
     }
 }
