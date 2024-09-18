@@ -1,43 +1,13 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage('Build-OS-Details'){
-            steps{
-                sh  '''
-                    cat /etc/os-release
-                '''
-            }            
-        }
-        stage('Build-Memory-details'){
-            steps{
-                sh '''
-                echo "The Memory details: " free -m
-                '''
+    tools {
+        git 'Default' // Use the default Git installation
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
             }
         }
-        stage('Build-cpu-details'){
-            steps{
-                sh '''
-                echo "Cpu details: " 
-                lscpu
-                '''
-            }
-        }
-        stage('Build-Private-ip'){
-            steps{
-                sh '''
-                echo "Private IP details: " 
-                hostname -I
-                '''
-            }  
-        }
-        stage('Build-cal'){
-            steps{
-                sh '''
-                echo "Building the cal: " 
-                cal
-                '''
-            }
-        }    
     }
 }
