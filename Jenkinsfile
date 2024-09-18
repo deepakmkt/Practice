@@ -1,19 +1,12 @@
 pipeline {
     agent any
+    tools {
+        git 'Default'  // Replace 'Default' with the Git tool name configured in Jenkins
+    }
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Building...'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
+                checkout scm
             }
         }
     }
